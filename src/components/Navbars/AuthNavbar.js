@@ -85,11 +85,11 @@ export default function Navbar(props) {
 
               <li className="flex items-center">
                 <button
-                  className="bg-lightBlue-500 text-white active:bg-lightBlue-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                  className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded"
                   type="submit"
                   onClick={() => this.connect()}
                 >
-                  <i className="fas fa-arrow-alt-circle-down"></i>Connect Wallet
+                  Connect Wallet
                 </button>
               </li>
             </ul>
