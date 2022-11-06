@@ -2,65 +2,112 @@
 
 import React from 'react';
 import './3Survey.css';
+import { useHistory } from 'react-router-dom';
+
+import weaveObj from "../../helper/weave";
+
 
 export default function survey_three() {
+  let history = useHistory();
+  const handleVote = (value) =>{
+    weaveObj.state.votes.push(value);
+    console.log(weaveObj.state.votes)
+      history.push("/survey/4");
+  }
   return (
+    
     <div className="num-40-a-survey-1">
       <span className="which-region-have-yo">
-        Which region have you spent most time in the past 6 months?
+        In which region have you spent the most time over the past 6 months?
       </span>
-      <div className="flex-container">
-        <img
-          className="moneyBags"
-          src={require('assets/img/moneyBags.png').default}
-        />
-        <span className="north-america">North America</span>
-        <img
-          className="moneyBags"
-          src={require('assets/img/moneyBags.png').default}
-        />
-        <span className="south-asia">South Asia</span>
-      </div>
-      <div className="flex-container-1">
-        <img
-          className="moneyBags"
-          src={require('assets/img/moneyBags.png').default}
-        />
-        <span className="latin-america-carib">
-          Latin America &amp; Caribbean
-        </span>
-        <img
-          className="moneyBags"
-          src={require('assets/img/moneyBags.png').default}
-        />
-        <span className="sub-saharan-africa">Sub-Saharan Africa</span>
-      </div>
       <div className="flex-container-2">
-        <img
-          className="moneyBags"
-          src={require('assets/img/moneyBags.png').default}
-        />
-        <span className="europe-central-asia">Europe &amp; Central Asia</span>
-        <img
-          className="moneyBags"
-          src={require('assets/img/moneyBags.png').default}
-        />
-        <span className="east-asia-pacific">East Asia &amp; Pacific</span>
+         <div className="container px-4 mx-auto">
+           <div className="flex flex-wrap">
+            <div className="w-full px-4 flex-1 cursor-pointer" onClick={() => handleVote(1)}>
+              <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">North America</label>
+        </div>
+      </span>
+    </div>
+    <div className="w-full px-4 flex-1 cursor-pointer" onClick={() => handleVote(2)}>
+    <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">South America</label>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+<div className="flex-container-2">
+<div className="container px-4 mx-auto">
+           <div className="flex flex-wrap">
+            <div className="w-full px-4 flex-1 cursor-pointer" onClick={() => handleVote(3)}>
+              <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">Latin america & Caribbean</label>
+        </div>
+      </span>
+    </div>
+    <div className="w-full px-4 flex-1 cursor-pointer" onClick={() => handleVote(4)}>
+    <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">Africa</label>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+<div className="flex-container-2">
+<div className="container px-4 mx-auto">
+           <div className="flex flex-wrap">
+            <div className="w-full px-4 flex-1 cursor-pointer"  onClick={() => handleVote(5)}>
+              <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">Europe</label>
+        </div>
+      </span>
+    </div>
+    <div className="w-full px-4 flex-1 cursor-pointer"  onClick={() => handleVote(6)}>
+    <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">Middle East</label>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+<div className="flex-container-2">
+<div className="container px-4 mx-auto">
+           <div className="flex flex-wrap">
+            <div className="w-full px-4 flex-1 cursor-pointer" onClick={() => handleVote(7)}>
+              <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">Asia</label>
+        </div>
+      </span>
+    </div>
+    <div className="w-full px-4 flex-1 cursor-pointer" onClick={() => handleVote(null)}>
+    <span className="text-sm block my-4 p-3 text-blueGray-700 rounded border border-solid border-blueGray-100">
+              <div className="flex items-center pl-4 rounded">
+              <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+              <label className="py-4 ml-2 w-full text-lg">Prefer not to say</label>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
       </div>
-      <div className="flex-container-3">
-        <img
-          className="moneyBags"
-          src={require('assets/img/moneyBags.png').default}
-        />
-        <span className="middle-east-north-a">
-          Middle East &amp; North Africa
-        </span>
-      </div>
-      {/* <BtnPrimary
-        className="btn-primary-instance-1"
-        {...propsData.btnPrimary}
-      /> */}
-      <span className="prefer-not-to-say">Prefer not to say</span>
     </div>
   );
 }

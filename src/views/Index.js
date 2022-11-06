@@ -1,13 +1,56 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
-import IndexNavbar from 'components/Navbars/IndexNavbar.js';
-import FooterSmall from 'components/Footers/FooterSmall.js';
-import weave from '../helper/weave';
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import FooterSmall from "components/Footers/FooterSmall.js";
+import weaveObj from "../helper/weave";
+import Popup from "components/Popup";
+
+import { useHistory } from 'react-router-dom';
 
 export default function Index() {
-  const w = new weave();
+  const [showConnectBtn, setShowConnectBtn] = React.useState(true);
+  const [showPopup, setShowPopup] = React.useState(false);
+  const [showSurveyBtn, setShowSurveyBtn] = React.useState(false);
+  const [showPOAPLabel, setShowPOAPLabel] = React.useState(false);
+  let history = useHistory();
+
+  weaveObj.state.updateCb = () => {
+    if(weaveObj.state.credentials){
+      setShowConnectBtn(false);
+    }
+    if(weaveObj.state.Session){
+      if(weaveObj.state.Session.scopes.length) {
+        setShowSurveyBtn(true);
+        setShowPOAPLabel(false)
+      } else {
+        setShowSurveyBtn(false);
+        setShowPOAPLabel(true)
+      }
+    
+    }
+  };
+
+  useEffect(() =>{
+    if(weaveObj.state.credentials && Object.keys(weaveObj.state.credentials).length) {
+      setShowConnectBtn(false);
+    }
+    if(weaveObj.state.Session && weaveObj.state.Session.scopes.length) {
+      setShowSurveyBtn(true);
+      setShowPOAPLabel(false)
+    }
+  },[])
+  const getPOAP = () => {
+    setShowPopup(true);
+  }
+  const beginSurvey = () => {
+    history.push("/survey");
+  }
+  const closePopup = () => {
+    setShowPopup(false);
+    weaveObj.login();
+  }
   return (
     <>
       <IndexNavbar fixed />
@@ -20,12 +63,34 @@ export default function Index() {
                 computing power
               </h2>
               <div className="mt-12">
+                {showConnectBtn ? (
                 <button
-                  onClick={() => w.connect()}
+                  onClick={() => weaveObj.connect()}
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   Connect wallet to get started
                 </button>
+                ) : (
+                  <>
+                  {showPOAPLabel ? <h3 className="mb-2"><b>Mint Your POAP to begin survey</b></h3> : "" }
+                  {showSurveyBtn ? (
+                     <button
+                     onClick={() => beginSurvey()}
+                       className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                     >
+                      Cast your vote
+                     </button>
+                  ) : (
+                  <button
+                  onClick={() => getPOAP()}
+                    className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                  >
+                    Get POAP
+                  </button>)
+}
+                  </>
+                )
+}
               </div>
             </div>
           </div>
@@ -213,6 +278,18 @@ export default function Index() {
         </section>
       </div>
       <FooterSmall />
+      {
+        showPopup ? (<div className="popup_page">
+          <div className="fragment">
+        <span id='close' className="bg-lightBlue-500" onClick={() => closePopup()}>x</span>
+        <h2 className="text-center">Mint your POAP to begin voting</h2>
+
+            <Popup
+              text=''
+          />
+        </div>
+    </div>) : ''
+      }
     </>
   );
 }

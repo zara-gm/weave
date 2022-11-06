@@ -1,0 +1,57 @@
+.fragment {
+    border: 1px solid #ccc;
+    color: #555;
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    height: 100%;
+  }
+  
+  .fragment:hover {
+    box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+  
+  }
+  
+  .fragment img { 
+    float: left;
+    margin-right: 10px;
+  }
+  
+  
+  .fragment h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 30px;
+  }
+  .fragment h4 {
+    padding: 0;
+    margin: 0;
+    color: #000;
+  }
+  #close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    font-size: 35px;
+  }
+  
+  #close:hover {
+  float:right;
+  display:inline-block;
+  padding:2px 5px;
+  background:#ccc;
+  color:#fff;
+  cursor: pointer;
+  }
+  .popup_page {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 45px;
+    z-index: 10;
+    background-color: #CCCCCC;
+    overflow: scroll;
+  }

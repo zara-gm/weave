@@ -6,4 +6,4 @@ export const authChain = "gnosis";
 
 export const organization = "weavedemo";
 export const data_collection = "ethsf22";
-export const data_table = "directory";
+export const data_table = "weaveflow";

@@ -11,7 +11,7 @@ class Records {
     toJson() {
         return JSON.stringify({
             "table": this.table,
-            "items": this.records.map((o) => o.toJson ? o.toJson() : o)
+            "items": this.records.map((o) =>  o)
         });
     }
 }

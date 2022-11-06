@@ -7,8 +7,7 @@ const {ethereum} =window;
 const Buffer = require("buffer").Buffer
 
 class weave  {
-
-    constructor() {
+    constructor(updateCb) {
 
         const storedKeys = localStorage.getItem("keys");
         const hasKeys = storedKeys != null && storedKeys.split(" ").length === 2;
@@ -22,6 +21,7 @@ class weave  {
 
         const wallet = localStorage.getItem("wallet");
         const credentials = localStorage.getItem("credentials") ? JSON.parse(localStorage.getItem("credentials")) : null;
+        const Session = localStorage.getItem("session") ? JSON.parse(localStorage.getItem("session")) : null;
 
         this.state = {
             wallet: wallet,
@@ -32,13 +32,20 @@ class weave  {
             columns: null,
             data: null,
             averageAge: null,
-            dataProof: null
+            dataProof: null,
+            Session: Session,
+            updateCb:updateCb,
+            votes: []
         };
     }
 
     async getWallet() {
         const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
         return accounts[0];
+    }
+    setState(obj) {
+        this.state = {...this.state, ...obj};
+        this.state.updateCb();
     }
 
     async connect() {
@@ -53,6 +60,8 @@ class weave  {
         });
         this.setState({ wallet: await this.getWallet() });
         localStorage.setItem("wallet", this.state.wallet);
+
+        this.setState({ Session: localStorage.getItem("session")})
 
         //This message must match what's hashed on server side, changing it here should trigger changing it also in the node
         let msg = "Please sign this message to confirm you own this wallet\nThere will be no blockchain transaction or any gas fees." +
@@ -91,7 +100,9 @@ class weave  {
 
         const session = await nodeApi.login(organization, pub, data_collection, this.state.credentials);
         console.log(session)
-        console.log(session.scopes.length > 0)
+        console.log(session.scopes.length > 0);
+        this.setState({"Session": session})
+        localStorage.setItem("session", JSON.stringify(this.state.Session));
         return { nodeApi, session };
     }
 
@@ -120,10 +131,11 @@ class weave  {
         ];
 
         //3. write
-        const records = new WeaveHelper.Records(data_table, items);
+        const records = new WeaveHelper.Records(data_table, this.state.votes);
         const res = await nodeApi.write(session, data_collection, records, WeaveHelper.Options.WRITE_DEFAULT)
         console.log("Write result")
         console.log(res)
+        this.state.updateCb(res);
     }
 
     async compute() {
@@ -253,6 +265,9 @@ class weave  {
         const data = res.data;
         console.log("Proof check result: ", data)
     }
+    
 }
 
-export default weave;
+const weaveObj = new weave()
+
+export default weaveObj;

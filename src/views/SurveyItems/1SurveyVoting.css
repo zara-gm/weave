@@ -14,10 +14,7 @@
 }
 
 .vote {
-  width: 84px;
-  height: 84px;
-  object-fit: cover;
-  margin-top: 15px;
+ height: 125px;
 }
 
 .we-are-decentralizin {
@@ -114,4 +111,13 @@
 
 .i-dont-care {
   margin-bottom: 13px;
+}
+
+.rectangle {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.cursor-pointer {
+  cursor: pointer;
 }

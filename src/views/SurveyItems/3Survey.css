@@ -165,3 +165,6 @@
   margin-bottom: 126px;
   line-height: 24px;
 }
+.rounded {
+  cursor: pointer;
+}

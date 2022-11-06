@@ -6,7 +6,7 @@ import './8Survey.css';
 export default function survey_eight() {
   return (
     <div className="num-40-a-survey-1">
-      <div className="rectangle-3">
+      <div className="rectangle shadow-xl rounded-lg">
         <img
           className="celebration"
           src={require('assets/img/celebration.png').default}
