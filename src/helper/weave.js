@@ -131,7 +131,7 @@ class weave  {
         ];
 
         //3. write
-        const records = new WeaveHelper.Records(data_table, this.state.votes);
+        const records = new WeaveHelper.Records(data_table, [this.state.votes]);
         const res = await nodeApi.write(session, data_collection, records, WeaveHelper.Options.WRITE_DEFAULT)
         console.log("Write result")
         console.log(res)

@@ -12,7 +12,7 @@ export default function survey_seven() {
   weaveObj.write(weaveObj.state.votes);
   console.log("final_votes", weaveObj.state.votes);
   weaveObj.state.updateCb = (res) => {
-      if(res === 'ok') {
+      if(res && res.res === 'ok') {
         history.push("/survey/8");
       }
   }

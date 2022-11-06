@@ -4,7 +4,7 @@ import './popup.css'
 class Popup extends React.Component{
 
     render(){
-        const poap = "<iframe width='100%' height='100%' scrolling='no' src='https://app.poap.xyz/claim/xoruaf' sandbox='allow-modals allow-forms allow-popups allow-scripts allow-same-origin'></iframe>";
+        const poap = "<iframe width='100%' height='100%' scrolling='no' src='http://poap.weavechain.com/weaveflowethsf22' sandbox='allow-modals allow-forms allow-popups allow-scripts allow-same-origin'></iframe>";
 
         return(
             <div className='popup h-screen'>
