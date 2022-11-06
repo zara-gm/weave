@@ -10,14 +10,15 @@ import weaveObj from '../../helper/weave';
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [showConnectBtn, setShowConnectBtn] = React.useState(true);
-  weaveObj.state.updateCb = () =>{
-    if(weaveObj.state.credentials){
-      setShowConnectBtn(false);
-      window.location.reload();
-    }
-  }
+
 
   useEffect(() =>{
+    weaveObj.state.updateCb = () =>{
+      if(weaveObj.state.credentials){
+        setShowConnectBtn(false);
+        window.location.reload();
+      }
+    }
     if(weaveObj.state.credentials && Object.keys(weaveObj.state.credentials).length) {
       setShowConnectBtn(false);
     }

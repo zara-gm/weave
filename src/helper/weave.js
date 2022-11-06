@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import WeaveHelper from "../weaveapi/helper";
 import { sideChain, authChain, organization, data_table, data_collection } from '../Config'
 import { FilterOp } from "../weaveapi/filter";
@@ -133,8 +134,18 @@ class weave  {
         const res = await nodeApi.mpc(session, data_collection, data_table, algo, fields, filter, WeaveHelper.Options.MPC_DEFAULT_NO_CHAIN)
         console.log("MPC result")
         console.log(res)
+        let respObj = {}
+        let key = field;
+        respObj[key] = res.res === 'ok' ? res.data : "";
+        this.state.updateCb(respObj);
+    }
 
-       this.setState.updateCb({field: res.data});
+    async getHash() {
+        const { nodeApi, session } = await this.login();
+        await new Promise(r => setTimeout(r, 1000)); //hack to wait for the polygon transaction
+        const hashReply = await nodeApi.hashes(session, data_collection, data_table, null, WeaveHelper.Options.READ_DEFAULT_NO_CHAIN)
+        const hash = hashReply.data[Object.keys(hashReply.data)[Object.keys(hashReply.data).length - 1]];
+        this.state.updateCb(hash);
     }
 
     async read() {

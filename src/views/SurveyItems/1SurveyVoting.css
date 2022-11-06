@@ -125,3 +125,6 @@
   display: block;
   margin: auto;
 }
+.text-small {
+  font-size: 12px;
+}
