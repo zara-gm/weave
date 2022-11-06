@@ -7,7 +7,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  font-family: Poppins;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 36px;
@@ -17,7 +16,7 @@
 .nav-loggedin-instance-1 {
   width: 100%;
   flex-basis: 6%;
-  margin-bottom: 142px;
+  margin-bottom: 196px;
 }
 
 .rectangle-3 {
@@ -28,7 +27,6 @@
   flex-basis: 43%;
   justify-content: space-around;
   align-items: center;
-  margin-left: 2px;
   padding-bottom: 33px;
   display: flex;
 }

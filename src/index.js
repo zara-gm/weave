@@ -16,6 +16,9 @@ import Landing from 'views/Landing.js';
 import Profile from 'views/Profile.js';
 import Index from 'views/Index.js';
 
+//Survey
+import Survey from 'layouts/Survey.js';
+
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
@@ -26,7 +29,8 @@ ReactDOM.render(
       <Route path="/landing" exact component={Landing} />
       <Route path="/profile" exact component={Profile} />
       <Route path="/" exact component={Index} />
-      {/* add redirect for first page */}
+      {/* survey routes  */}
+      <Route path="/survey" component={Survey} />
       <Redirect from="*" to="/" />
     </Switch>
   </BrowserRouter>,

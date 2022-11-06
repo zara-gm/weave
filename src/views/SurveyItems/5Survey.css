@@ -6,9 +6,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  font-family: Poppins;
-  font-size: 1.625rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
   line-height: 24px;
   display: flex;
 }
@@ -30,6 +29,7 @@
   color: #263238;
   margin-bottom: 25px;
   font-size: 1.875rem;
+  font-weight: 700;
   line-height: 45px;
 }
 
@@ -38,7 +38,7 @@
   color: #30373b;
   margin-bottom: 51px;
   margin-left: 1px;
-  font-weight: 500;
+  font-size: 1.625rem;
   line-height: 39px;
 }
 
@@ -53,6 +53,7 @@
   margin-bottom: 40px;
   font-family: Inter;
   font-size: 1.25rem;
+  font-weight: 700;
   display: flex;
 }
 
@@ -84,6 +85,4 @@
 
 .prefer-not-to-say {
   text-align: center;
-  font-size: 1rem;
-  font-weight: 500;
 }
