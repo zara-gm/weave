@@ -119,7 +119,7 @@ export default function Index() {
               </div>
               <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
                 <div className="ml-3">
-                  <h3 className="text-3xl font-semibold">Why WeaveFlow?</h3>
+                  <h3 className="text-3xl font-semibold">Why Secret Weavers?</h3>
                   <ul className="list-none mt-6">
                     <li className="py-2">
                       <div className="flex items-center">

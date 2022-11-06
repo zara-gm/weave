@@ -111,27 +111,11 @@ class weave  {
         //1. login
         const { nodeApi, session } = await this.login();
 
-        //2. define record (simple list, as we know the fixed table structure)
-        const items = [
-            [
-                null,               //id, filled server side
-                "nickname",         // name_nickname
-                "lastname",         // name_last
-                "firstname",        // name_first
-                "kishore@email.com",  // email
-                "+123456789",       // phone - erasure applied at read
-                "USA",              // address_country
-                "San Francisco",    // address_city - erasure applied at read
-                "https://linkedin.com/in/test", //  linkedin_url
-                "name#1234",        // discord_username
-                "@test",            // telegram username
-                "0x1234",           // wallet
-                "1990-01-01",       // birthday, YYYY-MM-DD format - erasure applied at read
-            ]
-        ];
-
         //3. write
-        const records = new WeaveHelper.Records(data_table, [this.state.votes]);
+        const toWrite = [...this.state.votes];
+        toWrite[1] = nodeApi.client.keyExchange.signRequest("d2VhdmVmbG93LnNlY3JldA==", toWrite[1]); 
+
+        const records = new WeaveHelper.Records(data_table, [toWrite]);
         const res = await nodeApi.write(session, data_collection, records, WeaveHelper.Options.WRITE_DEFAULT)
         console.log("Write result")
         console.log(res)

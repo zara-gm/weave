@@ -121,3 +121,7 @@
 .cursor-pointer {
   cursor: pointer;
 }
+.weave-logo {
+  display: block;
+  margin: auto;
+}
