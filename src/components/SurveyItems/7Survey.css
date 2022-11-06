@@ -1,0 +1,45 @@
+.num-40-f-submitting {
+  text-align: center;
+  color: #30373b;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: Poppins;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 36px;
+  display: flex;
+}
+
+.nav-loggedin-instance-1 {
+  width: 100%;
+  flex-basis: 6%;
+  margin-bottom: 142px;
+}
+
+.rectangle-3 {
+  width: 35%;
+  background-color: #fff;
+  border-radius: 5px;
+  flex-direction: column;
+  flex-basis: 43%;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 2px;
+  padding-bottom: 33px;
+  display: flex;
+}
+
+.loadingpana {
+  width: 346px;
+  height: 196px;
+  object-fit: cover;
+  margin-top: 8px;
+}
+
+.submitting-your-answ {
+  margin-bottom: 11px;
+}

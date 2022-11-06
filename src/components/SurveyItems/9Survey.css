@@ -1,0 +1,63 @@
+.num-40-g-submission-su {
+  color: #30373b;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 30px;
+  display: flex;
+}
+
+.nav-loggedin-instance-1 {
+  width: 100%;
+  flex-basis: 6%;
+  margin-bottom: 101px;
+}
+
+.rectangle-3 {
+  width: 35%;
+  background-color: #fff;
+  border-radius: 5px;
+  flex-direction: column;
+  flex-basis: 56%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 2px;
+  padding-top: 8px;
+  padding-bottom: 25px;
+  padding-right: 3px;
+  display: flex;
+}
+
+.celebrationrafiki {
+  width: 289px;
+  height: 207px;
+  object-fit: cover;
+  margin-top: 6px;
+  margin-left: 1px;
+}
+
+.success {
+  text-align: center;
+  margin-left: 1px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.check-out-our-dashbo {
+  margin-bottom: 4px;
+}
+
+.btn-primary-instance-1 {
+  width: 40%;
+  flex-basis: 8%;
+  margin-top: 1px;
+  margin-bottom: 8px;
+  margin-left: 9px;
+}

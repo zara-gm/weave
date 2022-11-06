@@ -1,0 +1,120 @@
+.num-30-b-voting {
+  color: #30373b;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: Poppins;
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 45px;
+  display: flex;
+}
+
+.nav-loggedin-instance-1 {
+  width: 100%;
+  flex-basis: 6%;
+  margin-bottom: 64px;
+}
+
+.vote {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  margin-bottom: 25px;
+}
+
+.we-are-decentralizin {
+  text-align: center;
+  color: #263238;
+  margin-bottom: 89px;
+  font-weight: 700;
+}
+
+.do-you-agree-with-el {
+  text-align: center;
+  margin-bottom: 42px;
+  font-size: 1.625rem;
+  line-height: 39px;
+}
+
+.flex-container {
+  width: 70%;
+  flex-direction: row;
+  flex-basis: 29%;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-left: 32px;
+  font-weight: 700;
+  display: flex;
+}
+
+.rectangle-3 {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  flex-direction: column;
+  flex-basis: 30%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 20px;
+  display: flex;
+}
+
+.emoticon-happy-outli {
+  width: 158px;
+  height: 158px;
+  object-fit: cover;
+}
+
+.yes {
+  margin-bottom: 7px;
+}
+
+.rectangle-4 {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  flex-direction: column;
+  flex-basis: 30%;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2px;
+  display: flex;
+}
+
+.emoticon-sad-outline {
+  width: 158px;
+  height: 158px;
+  object-fit: cover;
+  margin-bottom: 24px;
+}
+
+.no {
+  margin-bottom: 13px;
+}
+
+.rectangle-4-1 {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  flex-direction: column;
+  flex-basis: 30%;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3px;
+  display: flex;
+}
+
+.emoticon-neutral-out {
+  width: 158px;
+  height: 158px;
+  object-fit: cover;
+  margin-bottom: 23px;
+}
+
+.i-dont-care {
+  margin-bottom: 13px;
+}
