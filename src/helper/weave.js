@@ -122,27 +122,19 @@ class weave  {
         this.state.updateCb(res);
     }
 
-    async compute() {
+    async compute(field) {
         //1. login
         const { nodeApi, session } = await this.login();
 
         //2. MPC
         const algo = "mean";
-        const fields = [ "birthday" ];
+        const fields = [ field ];
         const filter = new WeaveHelper.Filter(null, { "id": "ASC" }, null, null);
         const res = await nodeApi.mpc(session, data_collection, data_table, algo, fields, filter, WeaveHelper.Options.MPC_DEFAULT_NO_CHAIN)
         console.log("MPC result")
         console.log(res)
 
-        const avgDate = new Date(res.data * 1);
-        const diff = new Date() - avgDate;
-        const days = diff / (24 * 3600 * 1000)
-        const years = days / 365.25 //new Date(diff).getFullYear() - 1970;
-        console.log("Average age", years)
-
-        this.setState({
-            averageAge: years
-        });
+       this.setState.updateCb({field: res.data});
     }
 
     async read() {

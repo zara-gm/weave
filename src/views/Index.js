@@ -42,8 +42,8 @@ export default function Index() {
     }
   },[])
   const getPOAP = () => {
-    window.open('https://poap.weavechain.com/weaveflowethsf22', '_blank', 'location=yes,scrollbars=yes,status=yes');
-    //setShowPopup(true);
+    //window.open('https://poap.weavechain.com/weaveflowethsf22', '_blank', 'location=yes,scrollbars=yes,status=yes');
+    setShowPopup(true);
   }
   const beginSurvey = () => {
     history.push("/survey");
