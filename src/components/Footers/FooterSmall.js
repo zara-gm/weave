@@ -7,7 +7,7 @@ export default function FooterSmall(props) {
         className={
           (props.absolute
             ? "absolute w-full bottom-0 bg-blueGray-800"
-            : "relative") + " pb-6"
+            : "relative") + " pb-6 bg-blueGray-600 pb-6"
         }
       >
         <div className="container mx-auto px-4">

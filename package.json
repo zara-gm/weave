@@ -1,8 +1,8 @@
 {
-  "name": "notus-react",
-  "version": "1.1.0",
-  "description": "Notus React - A free Tailwind CSS and React UI Kit and Admin by Creative Tim.",
-  "repository": "https://github.com/creativetimofficial/notus-react",
+  "name": "weaveflow",
+  "version": "0.0.1",
+  "description": "Weave Flow",
+  "repository": "https://github.com/zara-gm/weave",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
@@ -18,7 +18,19 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
-    "tailwindcss": "2.0.4"
+    "tailwindcss": "2.0.4",
+    "@solana/web3.js": "^1.63.1",
+    "@table-library/react-table-library": "^4.0.23",
+    "base58-js": "^1.0.4",
+    "buffer": "^6.0.3",
+    "crypto-js": "^4.1.1",
+    "elliptic": "^6.5.4",
+    "java-random": "^0.4.0",
+    "jsrsasign": "^10.5.27",
+    "moment": "^2.29.4",
+    "recharts": "^2.1.15",
+    "stream": "^0.0.2",
+    "web3": "^1.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
