@@ -51,7 +51,7 @@
 
 .check-out-our-dashbo {
   margin-bottom: 4px;
-  font-weight: 500;
+  font-weight: 200;
 }
 
 .btn-primary-instance-1 {
@@ -60,4 +60,8 @@
   margin-top: 1px;
   margin-bottom: 8px;
   margin-left: 9px;
+}
+.celebration {
+  display:block;
+    margin:auto;
 }
