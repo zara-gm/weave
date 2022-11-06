@@ -44,9 +44,22 @@ class weave  {
         const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
         return accounts[0];
     }
+
     setState(obj) {
         this.state = {...this.state, ...obj};
-        this.state.updateCb();
+    }
+
+    async reconnect() {
+        localStorage.removeItem("wallet");
+        localStorage.removeItem("credentials");
+        localStorage.removeItem("session");
+        this.setState({
+            wallet: null,
+            credentials: null,
+            Session: null
+        });
+
+        return this.connect();
     }
 
     async connect() {
@@ -120,24 +133,55 @@ class weave  {
         const res = await nodeApi.write(session, data_collection, records, WeaveHelper.Options.WRITE_DEFAULT)
         console.log("Write result")
         console.log(res)
-        this.state.updateCb(res);
+        return res;
     }
 
-    async compute(field) {
+    async computeAvg(fields) {
         //1. login
         const { nodeApi, session } = await this.login();
 
         //2. MPC
-        const algo = "mean";
-        const fields = [ field ];
-        const filter = new WeaveHelper.Filter(null, { "id": "ASC" }, null, null);
+        let respObj = {}
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i];
+
+            const algo = "mean";
+            const fieldsArg = [ field ];
+            const filter = new WeaveHelper.Filter(WeaveHelper.FilterOp.gte(field, 0), {"id": "ASC"}, null, null);
+            const res = await nodeApi.mpc(session, data_collection, data_table, algo, fieldsArg, filter, WeaveHelper.Options.MPC_DEFAULT_NO_CHAIN)
+            console.log("MPC result")
+            console.log(res)
+            let key = field;
+            respObj[key] = res.res === 'ok' ? res.data : "";
+        }
+
+        return respObj;
+    }
+
+    async computeCountsBy(fields, filterRegion) {
+        //1. login
+        const { nodeApi, session } = await this.login();
+
+        //2. MPC
+        const algo = "group_count";
+        const filter = null;
         const res = await nodeApi.mpc(session, data_collection, data_table, algo, fields, filter, WeaveHelper.Options.MPC_DEFAULT_NO_CHAIN)
         console.log("MPC result")
         console.log(res)
-        let respObj = {}
-        let key = field;
-        respObj[key] = res.res === 'ok' ? res.data : "";
-        this.state.updateCb(respObj);
+        return res.data;
+    }
+
+    async computeSumBy(fields) {
+        //1. login
+        const { nodeApi, session } = await this.login();
+
+        //2. MPC
+        const algo = "group_sum";
+        const filter = null;
+        const res = await nodeApi.mpc(session, data_collection, data_table, algo, fields, filter, WeaveHelper.Options.MPC_DEFAULT_NO_CHAIN)
+        console.log("MPC result")
+        console.log(res)
+        return res.data;
     }
 
     async getHash() {
@@ -145,7 +189,7 @@ class weave  {
         await new Promise(r => setTimeout(r, 1000)); //hack to wait for the polygon transaction
         const hashReply = await nodeApi.hashes(session, data_collection, data_table, null, WeaveHelper.Options.READ_DEFAULT_NO_CHAIN)
         const hash = hashReply.data[Object.keys(hashReply.data)[Object.keys(hashReply.data).length - 1]];
-        this.state.updateCb(hash);
+        return hash;
     }
 
     async read() {

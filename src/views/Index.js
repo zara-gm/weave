@@ -50,7 +50,13 @@ export default function Index() {
   }
   const closePopup = () => {
     setShowPopup(false);
-    weaveObj.login();
+    const resp = weaveObj.login();
+    resp.then((resObj) => {
+      if(resObj.session.scopes.length) {
+        setShowSurveyBtn(true);
+      setShowPOAPLabel(false)
+      }
+    })
   }
   return (
     <>
@@ -60,8 +66,7 @@ export default function Index() {
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-blueGray-600">
-                Get actionable insights with our world class confidential
-                computing power
+              Enabling trust in confidential computing with data lineage stored in blockchain
               </h2>
               <div className="mt-12">
                 {showConnectBtn ? (
@@ -131,7 +136,7 @@ export default function Index() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Governance for DAO admins
+                            Multi party computing
                           </h4>
                         </div>
                       </div>
@@ -157,7 +162,7 @@ export default function Index() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Vote confidently without bias
+                           Confidential computing
                           </h4>
                         </div>
                       </div>
@@ -171,7 +176,7 @@ export default function Index() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Confidential computing
+                            Data lineage
                           </h4>
                         </div>
                       </div>
@@ -185,7 +190,7 @@ export default function Index() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Analytics & insights
+                            DeSci
                           </h4>
                         </div>
                       </div>
@@ -218,9 +223,6 @@ export default function Index() {
                     />
                     <div className="pt-6 text-center">
                       <h5 className="text-xl font-bold">Dao voting</h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Dao members can vote on important issues TBF
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -235,9 +237,6 @@ export default function Index() {
                       <h5 className="text-xl font-bold">
                         Adtech with zero-party data
                       </h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Run ads with
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -252,9 +251,6 @@ export default function Index() {
                       <h5 className="text-xl font-bold">
                         Community-driven eCommerce
                       </h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Members can curate TBD
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -267,9 +263,6 @@ export default function Index() {
                     />
                     <div className="pt-6 text-center">
                       <h5 className="text-xl font-bold">DeSci</h5>
-                      <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                        Decentralize Science
-                      </p>
                     </div>
                   </div>
                 </div>

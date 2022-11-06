@@ -9,13 +9,13 @@ export default function survey_seven() {
   let history = useHistory();
   weaveObj.state.votes.unshift(weaveObj.state.wallet);
   weaveObj.state.votes.unshift(null);
-  weaveObj.write(weaveObj.state.votes);
-  console.log("final_votes", weaveObj.state.votes);
-  weaveObj.state.updateCb = (res) => {
+  weaveObj.write(weaveObj.state.votes).then((res) => {
+      console.log("final_votes", weaveObj.state.votes);
       if(res && res.res === 'ok') {
-        history.push("/survey/8");
+          history.push("/survey/8");
       }
-  }
+  });
+
   return (
     <div className="num-40-a-survey-1">
       <div className="rectangle shadow-xl rounded-lg">

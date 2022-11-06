@@ -14,10 +14,9 @@ export default function survey_eight() {
     history.push("/admin");
   }
   useEffect(() =>{
-    console.log(weaveObj.getHash());
-    weaveObj.state.updateCb = (hash) =>{
+    weaveObj.getHash().then((hash) =>{
       setHash(hash)
-    }
+    });
   },[])
 
   return (

@@ -11,18 +11,19 @@ export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [showConnectBtn, setShowConnectBtn] = React.useState(true);
 
-
-  useEffect(() =>{
-    weaveObj.state.updateCb = () =>{
-      if(weaveObj.state.credentials){
+  const setButtonsVisibility = () => {
+    weaveObj.state.updateCb = () => {
+      if (weaveObj.state.credentials) {
         setShowConnectBtn(false);
         window.location.reload();
       }
     }
-    if(weaveObj.state.credentials && Object.keys(weaveObj.state.credentials).length) {
+    if (weaveObj.state.credentials && Object.keys(weaveObj.state.credentials).length) {
       setShowConnectBtn(false);
     }
-  },[])
+  };
+
+  useEffect(() => setButtonsVisibility(),[ weaveObj ])
 
   return (
     <>
@@ -52,12 +53,14 @@ export default function Navbar(props) {
                 <button
                   className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                   type="submit"
-                  onClick={() => weaveObj.connect()}
+                  onClick={() => weaveObj.connect().then((r) => location.reload())}
                 >
                   Connect Wallet
                 </button>
                   ) : (
-                    weaveObj.state.wallet
+                      <button onClick={() => weaveObj.reconnect().then((r) => location.reload())}>
+                        {weaveObj.state.wallet}
+                      </button>
                   )
                 }
               </li>

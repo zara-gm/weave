@@ -7,21 +7,37 @@ import CardStats from "components/Cards/CardStats.js";
 
 export default function HeaderStats() {
 
-let computeList = ['annual_income_enum']
-
 const [annualIncome, setAnnualIncome] = useState();
 
-const [discordServer, setDiscordServer] = useState();
+const [discordServers, setDiscordServers] = useState();
+
+const [twitterFollowers, setTwitterFollowers] = useState();
+
+const [yesRatio, setYesRatio] = useState();
 
 useEffect(() =>{
-  weaveObj.compute('annual_income_enum');
-  weaveObj.state.updateCb = (res) => {
-      if(res) {
-        setAnnualIncome(Math.round(res['annual_income_enum']))
-      } else {
-        setAnnualIncome('-');
-      }
+  weaveObj.computeAvg([ 'annual_income_enum', 'twitter_followers', 'discord_servers' ]).then((res) => {
+    if(res) {
+      setAnnualIncome(Math.round(res['annual_income_enum']))
+      setDiscordServers(Math.round(res['discord_servers']))
+      setTwitterFollowers(Math.round(res['twitter_followers']))
+    } else {
+      setAnnualIncome('-');
+      setDiscordServers('-');
+      setTwitterFollowers('-');
     }
+  });
+
+  weaveObj.computeCountsBy([ 'vote_twitter_8' ]).then((res) => {
+    if(res) {
+      const yes = res[1];
+      const no = res[2];
+      setYesRatio(Math.round(100 * yes / (yes + no)) + "%");
+    } else {
+      setYesRatio('-');
+    }
+  });
+
 },[])
  
   return (
@@ -34,26 +50,26 @@ useEffect(() =>{
             <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="Average Annual Income"
+                  statSubtitle="Avg Annual Income"
                   statTitle={annualIncome}
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="Average Discord Servers"
-                  statTitle={discordServer}
+                  statSubtitle="Avg Twitter Followers"
+                  statTitle={twitterFollowers}
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="SALES"
-                  statTitle="924"
+                  statSubtitle="Avg Discord Servers"
+                  statTitle={discordServers}
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="PERFORMANCE"
-                  statTitle="49,65%"
+                  statSubtitle="Yes Ratio"
+                  statTitle={yesRatio}
                 />
               </div>
             </div>

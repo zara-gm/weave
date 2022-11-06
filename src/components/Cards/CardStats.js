@@ -32,6 +32,6 @@ export default function CardStats({
 }
 
 CardStats.defaultProps = {
-  statSubtitle: "Traffic",
-  statTitle: "350,897",
+  statSubtitle: "-",
+  statTitle: "-",
 };
