@@ -1,4 +1,4 @@
-# WeaveFlow (https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
+# WeaveFlow
 
 ### A beautiful UI Kit and Admin for Tailwind CSS and React.
 
@@ -58,7 +58,7 @@ We also feature the following 18 dynamic components:
 
 ## Table of Contents
 
-- [WeaveFlow (https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>](#weaveflow-httpsimgshieldsiotwitterurlhttpshieldsiosvgstylesociallogotwittera)
+- [WeaveFlow](#weaveflow)
     - [A beautiful UI Kit and Admin for Tailwind CSS and React.](#a-beautiful-ui-kit-and-admin-for-tailwind-css-and-react)
     - [Get Started](#get-started)
     - [Pages](#pages)
