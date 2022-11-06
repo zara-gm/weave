@@ -11,10 +11,12 @@ export default function survey_eight() {
           className="celebration"
           src={require('assets/img/celebration.png').default}
         />
-        <span className="success">Success!</span>
+        <div className="success">Success!</div>
+        <div>
         <span className="check-out-our-dashbo">
           Check out our dashboard for analytics and insights!
         </span>
+        </div>
       </div>
     </div>
   );
